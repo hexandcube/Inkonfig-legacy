@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&family=Montserrat:wght@400;700&display=swap');
+
+:root {
+  --sans-serif: "Montserrat", sans serif;
+  --monospace: "Space Mono", monospace;
+  --primary-color: #4056f4;
+  --secondary-color: #586CF6;
+  --primary-background-color: #ffffff;
+  --secondary-background-color: #F7F7FF;
+  --font-color: #363636;
+  --color-gray: #E0E0E0;
+  --color-purple: #5b3bfd;
+  --color-blue: #288cff;
+  --color-yellow: #ffbd00;
+  --color-pink: #f14668;
+  --color-red: #fe5f55;
+  --color-light-green: #02d7c1;
+  --color-green: #00ad90;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title {
+  font-family: var(--sans-serif);
+}
+
+.sans-serif {
+  font-family: var(--sans-serif) !important;
+}
+
+p,
+code,
+pre,
+a {
+  font-family: var(--monospace);
+}
+
+.monospace {
+  font-family: var(--monospace) !important;
+}
+
+.font-is-700 {
+  font-weight: 700 !important;
+}
+
+.font-is-400 {
+  font-weight: 400 !important;
+}
+
+.spinner-border {
+  margin-top: 100px;
+}
+
+.custom-select {
+  display: inline !important;
+}
+
+.form-check-label {
+  display: inline !important;
+}
+
+.is-info {
+  background-color: var(--primary-color) !important;
+}
+
+a.navbar-item:hover {
+  background-color: var(--secondary-color) !important;
+}
+
+li.menu-item {
+  padding: 3px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+li.is-active {
+  background-color: var(--primary-color) !important;
+  transition: all 0.2s ease;
+}
+
+li.is-active>a,
+li.is-active>ul>li>a {
+  color: white !important;
+  transition: all 0.2s ease;
+}
+
+li.is-active>a:hover,
+li.is-active>ul>li>a:hover {
+  color: black !important;
+  transition: all 0.2s ease;
+
+}
+
+.inkonfig-sidebar {
+  position: sticky !important;
+  top: 0;
+  margin-top: -20px;
+  padding-top: 20px;
+}
+
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px #0000001f,
+    0 1px 2px #0000003d;
+
+}
+
+#scrollToTopBtn:hover {
+  background-color: var(--secondary-color);
+  box-shadow: 0 3px 6px #00000029,
+    0 3px 6px #0000003b;
+}
+
+.is-muted {
+  color: #6e6e6e !important;
+  font-weight: lighter;
+}
+
+.loading {
+  text-align: center !important;
+  padding: 10% 0;
+}
+
+.status-div {
+  align-items: center;
+  min-width: 100px;
+  max-width: 500px;
+  border: 1px solid var(--color-gray);
+  padding: 0px 5px 2px 5px;
+  border-radius: 4px;
+  background-color: var(--secondary-bg-color);
+  display: inline-block !important;
+}
+
+.status-label {
+  color: var(--font-color);
+}
+
+#system-status {
+  color: var(--color-gray) !important;
+}
+
+#status-dot {
+  background-color: var(--color-gray);
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+#system-status.none {
+  color: var(--color-light-green) !important;
+}
+
+#status-dot.none {
+  background-color: var(--color-light-green);
+}
+
+#system-status.minor {
+  color: var(--color-yellow) !important;
+}
+
+#status-dot.minor {
+  background-color: var(--color-yellow);
+}
+
+#system-status.major {
+  color: var(--color-red) !important;
+}
+
+#status-dot.major {
+  background-color: var(--color-red);
+}
+
+#system-status.maintenance {
+  color: var(--color-blue) !important;
+}
+
+#status-dot.maintenance {
+  background-color: var(--color-blue);
+}
+
+.footer-level.level-right {
+  text-align: right;
+}
+
+footer {
+  padding: 70px 0 !important;
+}

@@ -1,0 +1,32 @@
+<script type="text/javascript" src="https://cdn.statuspage.io/se-v2.js"></script>
+<script>
+    var statuspage = new StatusPage.page({
+        page: 'wdf91pvxlsbj'
+    });
+    statuspage.summary({
+        success: function (data) {
+            var statusEmbed = document.querySelector("#system-status");
+            var statusDot = document.querySelector("#status-dot");
+            var serviceStatus = data.status.indicator;
+            if ("none" == serviceStatus) {
+                statusEmbed.innerText = "All systems operational";
+            } else if ("minor" == serviceStatus) {
+                statusEmbed.innerText = "Minor Outage";
+            } else if ("major" == serviceStatus) {
+                statusEmbed.innerText = "Major Outage";
+            } else if ("maintenance" == serviceStatus) {
+                statusEmbed.innerText = "Service Maintenance";
+            } else {
+                statusEmbed.innerText = "Unknown";
+            }
+            statusEmbed.classList.add(serviceStatus);
+            statusDot.classList.add(serviceStatus);
+        }
+    });
+</script>
+<a href="https://status.hexandcube.tk" target="_blank">
+    <div class="status-div">
+        <span class="status-label">Status:</span> <span id="status-dot"></span> <span id="system-status">Loading
+            status...</span>
+    </div>
+</a>
