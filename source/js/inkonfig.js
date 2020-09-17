@@ -160,6 +160,15 @@ echo Configuring your settings, please wait...`;
         scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System" /v "VerboseStatus" /t REG_DWORD /d "0" /f`;
     }
 
+    if (document.getElementById("shutdownEventTracker").value == "true") {
+        scriptContent += `\nREM Enable shutdown event tracker`;
+        scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Reliability" /v "ShutdownReasonOn" /t REG_DWORD /d "1" /f`;
+        scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Reliability" /v "ShutdownReasonUI" /t REG_DWORD /d "1" /f`;
+    } else if (document.getElementById("shutdownEventTracker").value == "false") {
+        scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Reliability" /v "ShutdownReasonOn" /t REG_DWORD /d "0" /f`;
+        scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Reliability" /v "ShutdownReasonUI" /t REG_DWORD /d "0" /f`;
+    }
+
     if (document.getElementById("installSoftware").checked == true) {
         if (document.getElementById("dontInstallChocolatey").checked == false) {
             scriptContent += `\n@"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin"`;

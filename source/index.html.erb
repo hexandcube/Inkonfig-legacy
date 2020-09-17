@@ -5,188 +5,200 @@ layout: index
 
 <%= partial "partials/hero" %>
 
-<button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button> 
+<button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 <div class="loading"> <i title="loading" class="fas fa-compass fa-spin fa-3x inline-block"></i></div>
 <section class="section" id="wizard" style="display: none;>
-  <div class="container">
-    <div class="columns" id="configurator">
-      <div class="column is-one-fifth">
-        <aside class="inkonfig-sidebar">
-          <p class="menu-label">
-            Inkonfig Wizard
-          </p>
-          <ul class="menu-list" id="inkonfig-menu">
-            <li class="menu-item"><a href="#personalization">Personalization</a></li>
-            <li class="menu-item">
-              <a href="#software" class="menu-item-header">Software</a>
-              <ul>
-                <li class="menu-item"><a href="#bloatware">Bloatware and Ads</a></li>
-                <li class="menu-item"><a href="#wsl">Windows Subsystem for Linux (WSL)</a></li>
-              </ul>
-            </li>
-            <li class="menu-item"><a href="#advanced-configuration">Advanced Configuration</a></li>
-            <li class="menu-item"><a href="#script-options">Script options</a></li>
-          </ul>
-        </aside>
-      </div>
-      <div class="column">
-        <form class="col" id="configForm">
-          <h2 class="title" id="personalization">Personalization</h2>
-          <div class="field">
-            <label class="label" for="pcName">Change the name of your PC <span
-                class="is-muted">(Optional)</span></label>
-            <input class="input no-spaces" type="text" maxlength="15" id="pcName" placeholder="e.g. Hexandcube-PC">
-          </div>
-          <div class="columns">
-            <div class="column">
-              <div class="field">
-                <label class="label" for="showFileExt">Common File Extensions:</label>
-                <div class="select is-fullwidth">
-                  <select name="showFileExt" id="showFileExt">
-                    <option value="default" selected>Don't Change</option>
-                    <option value="true">Shown</option>
-                    <option value="false">Hidden (default)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="field">
-                <label class="label" for="enableHibernation">Hibernation:</label>
-                <div class="select is-fullwidth">
-                  <select name="enableHibernation" id="enableHibernation">
-                    <option value="default" selected>Don't Change</option>
-                    <option value="true">Enabled</option>
-                    <option value="false">Disabled (default)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="field">
-                <label class="label" for="secondsInTaskbarClock">Seconds in the taskbar clock:</label>
-                <div class="select is-fullwidth">
-                  <select name="secondsInTaskbarClock" class="custom-select" id="secondsInTaskbarClock">
-                    <option value="default" selected>Don't Change</option>
-                    <option value="true">Shown</option>
-                    <option value="false">Hidden (default)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column">
-              <div class="field">
-                <label class="label" for="ctrlAltDel">Require CTRL + ALT + DEL to login:</label>
-                <div class="select is-fullwidth">
-                  <select name="ctrlAltDel" class="custom-select" id="ctrlAltDel">
-                    <option value="default" selected>Don't Change</option>
-                    <option value="true">Enabled</option>
-                    <option value="false">Disabled (default)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="field">
-                <label class="label" for="verboseLogonStatus">Verbose logon messages:</label>
-                <div class="select is-fullwidth">
-                  <select name="verboseLogonStatus" class="custom-select" id="verboseLogonStatus">
-                    <option value="default" selected>Don't Change</option>
-                    <option value="true">Enabled</option>
-                    <option value="false">Disabled (default)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-            </div>
-          </div>
-          <br>
-          <h2 class="title" id="software">Software</h2>
-          <div class="field">
-            <label for="installSoftware">
-              <input type="checkbox" class="custom-control-input" id="installSoftware" onclick="chocolateyCheckboxUpdate()">
-              Install software using Chocolatey
-            </label>
-          </div>
-
-          <div id="softwareSelection" style="display: none;">
-            <div class="checkbox">
-              <input type="checkbox" class="custom-control-input" id="dontInstallChocolatey">
-              <label for="dontInstallChocolatey" class="custom-control-label">I've already installed the
-                Chocolatey Package Manager</label>
-            </div>
-
-            <div class="form-group">
-              <label for="additionalPackages">Enter package names seperated by a space</label>
-              <textarea class="input" id="additionalPackages" rows="6"
-                placeholder="e.g. firefox vlc jre8 7zip git"></textarea>
-            </div>
-          </div>
-          <br>
-          <h5 class="title is-5" id="bloatware">Bloatware and Ads</h5>
-          <div class="field">
-            <label class="label" for="disableAds">Ads and Unwanted apps:</label>
-            <div class="select is-fullwidth">
-              <select name="disableAds" id="disableAds">
-                <option value="default" selected>Don't Change</option>
-                <option value="false">Enabled (default)</option>
-                <option value="true">Disabled</option>
-              </select>
-            </div>
-          </div>
-          <br>
-          <h5 class="title is-5" id="wsl">Windows Subsystem for Linux (WSL)</h5>
-          <p>WSL is only supported on 64-bit versions of Windows 10/Server 2019 build 16215 or higher. WSL 2
-            requires Build 18197 or higher and Virtual Machine Platform.
-            After enabling WSL you can <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-your-linux-distribution-of-choice">install
-              your Linux distribution of choice from the Microsoft Store</a>.
-          </p>
-          <br>
-          <div class="field">
-            <input type="checkbox" class="custom-control-input" id="enableWSL">
-            <label for="enableWSL" class="custom-control-label">Enable Windows Subsystem for Linux</label>
-          </div>
-          <div class="field">
-            <input type="checkbox" class="custom-control-input" id="enableVMP">
-            <label for="enableVMP" class="custom-control-label">Enable Virtual Machine Platform <span class="is-muted">(Required by WSL 2)</span></label>
-          </div>
-          <span class="is-muted">After WSL is installed using the generated script, you may want to <a
-              href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#set-wsl-2-as-your-default-version">set
-              WSL 2 as your default version</a>.</span>
-          <br><br>
-
-          <h2 class="title" id="advanced-configuration">Advanced Configuration</h2>
-
-          <div class="field">
-            <label class="label" for="tempPaths">Change the TMP and TEMP paths <span
-                class="is-muted">(Optional)</span></label>
-            <input class="input" type="text" maxlength="15" class="" id="tempPaths" placeholder="e.g. C:\temp">
-          </div>
-
-          <h4 class="title is-4" id="script-options">Script options</h4>
-          <label for="scriptName">Enter the file name for the script <span class="is-muted">(Optional)</span></label>
-          <div class="field" style="width: 370px;">
-            <input type="text" class="input no-spaces filename" maxlength="30" id="scriptName"
-              placeholder="InkonfigScript">
-          </div>
-          <br>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="restartPC">
-            <label for="restartPC" class="custom-control-label">Restart the computer after applying the
-              configuration
-              <span class="is-muted">(Recomended)</span></label>
-          </div>
-          <br>
-          <button type="button" class="button is-info" id="generateButton" onclick="generateScript()">Generate
-            Script</button>
-          <button type="button" class="button is-danger is-inverted" id="generateButton"
-            onclick="this.form.reset(); chocolateyCheckboxUpdate();">Reset</button>
-        </form>
-      </div>
+  <div class=" container">
+  <div class="columns" id="configurator">
+    <div class="column is-one-fifth">
+      <aside class="inkonfig-sidebar">
+        <p class="menu-label">
+          Inkonfig Wizard
+        </p>
+        <ul class="menu-list" id="inkonfig-menu">
+          <li class="menu-item"><a href="#personalization">Personalization</a></li>
+          <li class="menu-item">
+            <a href="#software" class="menu-item-header">Software</a>
+            <ul>
+              <li class="menu-item"><a href="#bloatware">Bloatware and Ads</a></li>
+              <li class="menu-item"><a href="#wsl">Windows Subsystem for Linux (WSL)</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a href="#advanced-configuration">Advanced Configuration</a></li>
+          <li class="menu-item"><a href="#script-options">Script options</a></li>
+        </ul>
+      </aside>
     </div>
+    <div class="column">
+      <form class="col" id="configForm">
+        <h2 class="title" id="personalization">Personalization</h2>
+        <div class="field">
+          <label class="label" for="pcName">Change the name of your PC <span class="is-muted">(Optional)</span></label>
+          <input class="input no-spaces" type="text" maxlength="15" id="pcName" placeholder="e.g. Hexandcube-PC">
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="showFileExt">Common File Extensions:</label>
+              <div class="select is-fullwidth">
+                <select name="showFileExt" id="showFileExt">
+                  <option value="default" selected>Don't Change</option>
+                  <option value="true">Shown</option>
+                  <option value="false">Hidden (default)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="enableHibernation">Hibernation:</label>
+              <div class="select is-fullwidth">
+                <select name="enableHibernation" id="enableHibernation">
+                  <option value="default" selected>Don't Change</option>
+                  <option value="true">Enabled</option>
+                  <option value="false">Disabled (default)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="secondsInTaskbarClock">Seconds in the taskbar clock:</label>
+              <div class="select is-fullwidth">
+                <select name="secondsInTaskbarClock" class="custom-select" id="secondsInTaskbarClock">
+                  <option value="default" selected>Don't Change</option>
+                  <option value="true">Shown</option>
+                  <option value="false">Hidden (default)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="ctrlAltDel">Require CTRL + ALT + DEL to login:</label>
+              <div class="select is-fullwidth">
+                <select name="ctrlAltDel" class="custom-select" id="ctrlAltDel">
+                  <option value="default" selected>Don't Change</option>
+                  <option value="true">Enabled</option>
+                  <option value="false">Disabled (default)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="verboseLogonStatus">Verbose logon messages:</label>
+              <div class="select is-fullwidth">
+                <select name="verboseLogonStatus" class="custom-select" id="verboseLogonStatus">
+                  <option value="default" selected>Don't Change</option>
+                  <option value="true">Enabled</option>
+                  <option value="false">Disabled (default)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+          </div>
+        </div>
+        <br>
+        <h2 class="title" id="software">Software</h2>
+        <div class="field">
+          <label for="installSoftware">
+            <input type="checkbox" class="custom-control-input" id="installSoftware"
+              onclick="chocolateyCheckboxUpdate()">
+            Install software using Chocolatey
+          </label>
+        </div>
+
+        <div id="softwareSelection" style="display: none;">
+          <div class="checkbox">
+            <input type="checkbox" class="custom-control-input" id="dontInstallChocolatey">
+            <label for="dontInstallChocolatey" class="custom-control-label">I've already installed the
+              Chocolatey Package Manager</label>
+          </div>
+
+          <div class="form-group">
+            <label for="additionalPackages">Enter package names seperated by a space</label>
+            <textarea class="input" id="additionalPackages" rows="6"
+              placeholder="e.g. firefox vlc jre8 7zip git"></textarea>
+          </div>
+        </div>
+        <br>
+        <h5 class="title is-5" id="bloatware">Bloatware and Ads</h5>
+        <div class="field">
+          <label class="label" for="disableAds">Ads and Unwanted apps:</label>
+          <div class="select is-fullwidth">
+            <select name="disableAds" id="disableAds">
+              <option value="default" selected>Don't Change</option>
+              <option value="false">Enabled (default)</option>
+              <option value="true">Disabled</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <h5 class="title is-5" id="wsl">Windows Subsystem for Linux (WSL)</h5>
+        <p>WSL is only supported on 64-bit versions of Windows 10/Server 2019 build 16215 or higher. WSL 2
+          requires Build 18197 or higher and Virtual Machine Platform.
+          After enabling WSL you can <a
+            href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#install-your-linux-distribution-of-choice">install
+            your Linux distribution of choice from the Microsoft Store</a>.
+        </p>
+        <br>
+        <div class="field">
+          <input type="checkbox" class="custom-control-input" id="enableWSL">
+          <label for="enableWSL" class="custom-control-label">Enable Windows Subsystem for Linux</label>
+        </div>
+        <div class="field">
+          <input type="checkbox" class="custom-control-input" id="enableVMP">
+          <label for="enableVMP" class="custom-control-label">Enable Virtual Machine Platform <span
+              class="is-muted">(Required by WSL 2)</span></label>
+        </div>
+        <span class="is-muted">After WSL is installed using the generated script, you may want to <a
+            href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#set-wsl-2-as-your-default-version">set
+            WSL 2 as your default version</a>.</span>
+        <br><br>
+
+        <h2 class="title" id="advanced-configuration">Advanced Configuration</h2>
+
+        <div class="field">
+          <label class="label" for="tempPaths">Change the TMP and TEMP paths <span
+              class="is-muted">(Optional)</span></label>
+          <input class="input" type="text" maxlength="15" class="" id="tempPaths" placeholder="e.g. C:\temp">
+        </div>
+        <div class="field">
+          <label class="label" for="shutdownEventTracker">Shutdown Event Tracker:</label>
+          <div class="select is-fullwidth">
+            <select name="shutdownEventTracker" class="custom-select" id="shutdownEventTracker">
+              <option value="default" selected>Don't Change</option>
+              <option value="true">Enabled</option>
+              <option value="false">Disabled (default)</option>
+            </select>
+          </div>
+        </div>
+
+        <h4 class="title is-4" id="script-options">Script options</h4>
+        <label for="scriptName">Enter the file name for the script <span class="is-muted">(Optional)</span></label>
+        <div class="field" style="width: 370px;">
+          <input type="text" class="input no-spaces filename" maxlength="30" id="scriptName"
+            placeholder="InkonfigScript">
+        </div>
+        <br>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="restartPC">
+          <label for="restartPC" class="custom-control-label">Restart the computer after applying the
+            configuration
+            <span class="is-muted">(Recomended)</span></label>
+        </div>
+        <br>
+        <button type="button" class="button is-info" id="generateButton" onclick="generateScript()">Generate
+          Script</button>
+        <button type="button" class="button is-danger is-inverted" id="generateButton"
+          onclick="this.form.reset(); chocolateyCheckboxUpdate();">Reset</button>
+      </form>
+    </div>
+  </div>
   </div>
 </section>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
