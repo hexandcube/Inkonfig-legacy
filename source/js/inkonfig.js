@@ -165,8 +165,17 @@ echo Configuring your settings, please wait...`;
         scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Reliability" /v "ShutdownReasonOn" /t REG_DWORD /d "1" /f`;
         scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Reliability" /v "ShutdownReasonUI" /t REG_DWORD /d "1" /f`;
     } else if (document.getElementById("shutdownEventTracker").value == "false") {
+        scriptContent += `\nREM Disable shutdown event tracker`;
         scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Reliability" /v "ShutdownReasonOn" /t REG_DWORD /d "0" /f`;
         scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Reliability" /v "ShutdownReasonUI" /t REG_DWORD /d "0" /f`;
+    }
+
+    if (document.getElementById("openWithNotepadFCM").value == "true") {
+        scriptContent += `\nREM Show Open with Notepad in File Context Menu`;
+        scriptContent += `\nREG add "HKCR\\*\\shell\\Open with Notepad\\command" /ve /t REG_SZ /d "notepad.exe %%1" /f`;
+    } else if (document.getElementById("openWithNotepadFCM").value == "false") {
+        scriptContent += `\nREM Hide Open with Notepad from the File Context Menu`;
+        scriptContent += `\nREG delete "HKCR\\*\\shell\\Open with Notepad" /f`;
     }
 
     if (document.getElementById("installSoftware").checked == true) {

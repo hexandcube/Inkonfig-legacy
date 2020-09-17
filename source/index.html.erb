@@ -16,7 +16,12 @@ layout: index
           Inkonfig Wizard
         </p>
         <ul class="menu-list" id="inkonfig-menu">
-          <li class="menu-item"><a href="#personalization">Personalization</a></li>
+          <li class="menu-item">
+            <a href="#personalization">Personalization</a>
+            <ul>
+              <li class="menu-item"><a href="#contextMenu">Context Menu</a></li>
+            </ul>
+          </li>
           <li class="menu-item">
             <a href="#software" class="menu-item-header">Software</a>
             <ul>
@@ -102,6 +107,17 @@ layout: index
           <div class="column">
           </div>
         </div>
+        <h5 class="title is-5" id="contextMenu">Context Menu</h5>
+        <div class="field">
+              <label class="label" for="openWithNotepadFCM">Show Open with notepad in the File Context Menu:</label>
+              <div class="select is-fullwidth">
+                <select name="openWithNotepadFCM" id="openWithNotepadFCM">
+                  <option value="default" selected>Don't Change</option>
+                  <option value="true">Enabled</option>
+                  <option value="false">Disabled (default)</option>
+                </select>
+              </div>
+            </div>
         <br>
         <h2 class="title" id="software">Software</h2>
         <div class="field">
