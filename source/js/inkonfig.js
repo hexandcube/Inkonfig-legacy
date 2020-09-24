@@ -178,6 +178,46 @@ echo Configuring your settings, please wait...`;
         scriptContent += `\nREG delete "HKCR\\*\\shell\\Open with Notepad" /f`;
     }
 
+    if (document.getElementById("shellDocuments").value) {
+        var shellDocuments = document.getElementById("shellDocuments").value
+        scriptContent += `\nREM Change Location for Documents`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "{F42EE2D3-909F-4907-8871-4C22FC0BF756}" /t REG_EXPAND_SZ /d "${shellDocuments}" /f`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "Personal" /t REG_EXPAND_SZ /d "${shellDocuments}" /f`;
+    }
+
+    if (document.getElementById("shellPictures").value) {
+        var shellPictures = document.getElementById("shellPictures").value
+        scriptContent += `\nREM Change Location for Pictures`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "{0DDD015D-B06C-45D5-8C4C-F59713854639}" /t REG_EXPAND_SZ /d "${shellPictures}" /f`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "My Pictures /t REG_EXPAND_SZ /d "${shellPictures}" /f`;
+    } 
+
+    if (document.getElementById("shellVideos").value) {
+        var shellVideos = document.getElementById("shellVideos").value
+        scriptContent += `\nREM Change Location for Videos`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "{35286A68-3C57-41A1-BBB1-0EAE73D76C95}" /t REG_EXPAND_SZ /d "${shellVideos}" /f`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "My Video" /t REG_EXPAND_SZ /d "${shellVideos}" /f`;
+    } 
+
+    if (document.getElementById("shellMusic").value) {
+        var shellMusic = document.getElementById("shellMusic").value
+        scriptContent += `\nREM Change Location for Videos`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "{A0C69A99-21C8-4671-8703-7934162FCF1D}" /t REG_EXPAND_SZ /d "${shellMusic}" /f`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "My Music" /t REG_EXPAND_SZ /d "${shellMusic}" /f`;
+    } 
+
+    if (document.getElementById("shellDesktop").value) {
+        var shellDesktop = document.getElementById("shellDesktop").value
+        scriptContent += `\nREM Change Location for Desktop`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "Desktop" /t REG_EXPAND_SZ /d "${shellDesktop}" /f`;
+    } 
+
+    if (document.getElementById("shellDownload").value) {
+        var shellDownload = document.getElementById("shellDownload").value
+        scriptContent += `\nREM Change Location for Downloads`;
+        scriptContent += `\nREG add "HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders" /v "{7D83EE9B-2244-4E70-B1F5-5393042AF1E4}" /t REG_EXPAND_SZ /d "${shellDownload}" /f`;
+    } 
+
     if (document.getElementById("installSoftware").checked == true) {
         if (document.getElementById("dontInstallChocolatey").checked == false) {
             scriptContent += `\n@"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\\chocolatey\\bin"`;

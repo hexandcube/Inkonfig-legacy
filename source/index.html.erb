@@ -20,6 +20,7 @@ layout: index
             <a href="#personalization">Personalization</a>
             <ul>
               <li class="menu-item"><a href="#contextMenu">Context Menu</a></li>
+              <li class="menu-item"><a href="#shellfolders">Shell folders</a></li>
             </ul>
           </li>
           <li class="menu-item">
@@ -109,15 +110,64 @@ layout: index
         </div>
         <h5 class="title is-5" id="contextMenu">Context Menu</h5>
         <div class="field">
-              <label class="label" for="openWithNotepadFCM">Show Open with notepad in the File Context Menu:</label>
-              <div class="select is-fullwidth">
-                <select name="openWithNotepadFCM" id="openWithNotepadFCM">
-                  <option value="default" selected>Don't Change</option>
-                  <option value="true">Enabled</option>
-                  <option value="false">Disabled (default)</option>
-                </select>
-              </div>
+          <label class="label" for="openWithNotepadFCM">Show Open with notepad in the File Context Menu:</label>
+          <div class="select is-fullwidth">
+            <select name="openWithNotepadFCM" id="openWithNotepadFCM">
+              <option value="default" selected>Don't Change</option>
+              <option value="true">Enabled</option>
+              <option value="false">Disabled (default)</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <h5 class="title is-5" id="shellfolders">Shell Folders</h5>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="shellDocuments">Documents <span class="is-muted">(Optional)</span></label>
+              <input class="input no-spaces" type="text" maxlength="20" id="shellDocuments"
+                placeholder="e.g. D:\Documents">
             </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="shellPictures">Pictures <span class="is-muted">(Optional)</span></label>
+              <input class="input no-spaces" type="text" maxlength="20" id="shellPictures"
+                placeholder="e.g. D:\Pictures">
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="shellVideos">Videos <span class="is-muted">(Optional)</span></label>
+              <input class="input no-spaces" type="text" maxlength="20" id="shellVideos"
+                placeholder="e.g. D:\Videos">
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" for="shellMusic">Music <span class="is-muted">(Optional)</span></label>
+              <input class="input no-spaces" type="text" maxlength="20" id="shellMusic"
+                placeholder="e.g. D:\Music">
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="shellDesktop">Desktop <span class="is-muted">(Optional)</span></label>
+              <input class="input no-spaces" type="text" maxlength="20" id="shellDesktop"
+                placeholder="e.g. D:\Desktop">
+            </div>
+          </div>
+          <div class="column">
+            <div class="field">
+              <label class="label" for="shellDownload">Download <span class="is-muted">(Optional)</span></label>
+              <input class="input no-spaces" type="text" maxlength="20" id="shellDownload"
+                placeholder="e.g. D:\Download">
+            </div>
+          </div>
+        </div>
+
         <br>
         <h2 class="title" id="software">Software</h2>
         <div class="field">
