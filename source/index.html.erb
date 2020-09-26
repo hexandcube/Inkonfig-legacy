@@ -7,6 +7,23 @@ layout: index
 
 <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 <div class="loading"> <i title="loading" class="fas fa-compass fa-spin fa-3x inline-block"></i></div>
+<noscript>
+  <div class="container" style="margin-bottom: 100px; margin-top: 100px;">
+    <div class="notification is-danger">
+      <strong>Your browser does not support JavaScript or scripts are being blocked</strong>
+      <br>
+      Inkonfig is not able to work without JavaScript (as its literally written in JS).
+      Consider switching to a modern browser that supports JavaScript (I recommend Firefox), or whitelisting Inkonfig in
+      your script blocking software.
+    </div>
+  </div>
+  <br>
+  <style>
+    .loading {
+      display: none !important;
+    }
+  </style>
+</noscript>
 <section class="section" id="wizard" style="display: none;>
   <div class=" container">
   <div class="columns" id="configurator">
@@ -33,6 +50,14 @@ layout: index
           <li class="menu-item"><a href="#advanced-configuration">Advanced Configuration</a></li>
           <li class="menu-item"><a href="#script-options">Script options</a></li>
         </ul>
+        <div class="container sidebar-buttons">
+          <button type="button" class="button is-info is-fullwidth" id="generateButton"
+            onclick="generateScript()">Generate
+            Script</button>
+          <br>
+          <button type="button" class="button is-danger is-inverted is-fullwidth" id="generateButton"
+            onclick="this.form.reset(); chocolateyCheckboxUpdate();">Reset</button>
+        </div>
       </aside>
     </div>
     <div class="column">
@@ -139,8 +164,7 @@ layout: index
           <div class="column">
             <div class="field">
               <label class="label" for="shellVideos">Videos <span class="is-muted">(Optional)</span></label>
-              <input class="input no-spaces" type="text" maxlength="20" id="shellVideos"
-                placeholder="e.g. D:\Videos">
+              <input class="input no-spaces" type="text" maxlength="20" id="shellVideos" placeholder="e.g. D:\Videos">
             </div>
           </div>
         </div>
@@ -148,15 +172,13 @@ layout: index
           <div class="column">
             <div class="field">
               <label class="label" for="shellMusic">Music <span class="is-muted">(Optional)</span></label>
-              <input class="input no-spaces" type="text" maxlength="20" id="shellMusic"
-                placeholder="e.g. D:\Music">
+              <input class="input no-spaces" type="text" maxlength="20" id="shellMusic" placeholder="e.g. D:\Music">
             </div>
           </div>
           <div class="column">
             <div class="field">
               <label class="label" for="shellDesktop">Desktop <span class="is-muted">(Optional)</span></label>
-              <input class="input no-spaces" type="text" maxlength="20" id="shellDesktop"
-                placeholder="e.g. D:\Desktop">
+              <input class="input no-spaces" type="text" maxlength="20" id="shellDesktop" placeholder="e.g. D:\Desktop">
             </div>
           </div>
           <div class="column">
@@ -243,8 +265,8 @@ layout: index
             </select>
           </div>
         </div>
-
-        <h4 class="title is-4" id="script-options">Script options</h4>
+        <br>
+        <h2 class="title" id="script-options">Script options</h2>
         <label for="scriptName">Enter the file name for the script <span class="is-muted">(Optional)</span></label>
         <div class="field" style="width: 370px;">
           <input type="text" class="input no-spaces filename" maxlength="30" id="scriptName"
@@ -258,10 +280,6 @@ layout: index
             <span class="is-muted">(Recomended)</span></label>
         </div>
         <br>
-        <button type="button" class="button is-info" id="generateButton" onclick="generateScript()">Generate
-          Script</button>
-        <button type="button" class="button is-danger is-inverted" id="generateButton"
-          onclick="this.form.reset(); chocolateyCheckboxUpdate();">Reset</button>
       </form>
     </div>
   </div>
