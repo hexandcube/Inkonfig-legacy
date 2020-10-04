@@ -160,6 +160,14 @@ echo Configuring your settings, please wait...`;
         scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System" /v "VerboseStatus" /t REG_DWORD /d "0" /f`;
     }
 
+    if (document.getElementById("launchExplorerTo").value == "thispc") {
+        scriptContent += `\nREM Launch windows explorer to This PC`;
+        scriptContent += `\nREG add "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced" /v "LaunchTo" /t REG_DWORD /d "1" /f`;
+    } else if (document.getElementById("launchExplorerTo").value == "quickaccess") {
+        scriptContent += `\nREM Launch windows explorer to Quick Access (system default)`;
+        scriptContent += `\nREG add "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced" /v "LaunchTo" /t REG_DWORD /d "2" /f`;
+    }
+
     if (document.getElementById("shutdownEventTracker").value == "true") {
         scriptContent += `\nREM Enable shutdown event tracker`;
         scriptContent += `\nREG add "HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\Reliability" /v "ShutdownReasonOn" /t REG_DWORD /d "1" /f`;
